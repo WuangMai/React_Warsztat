@@ -24,7 +24,7 @@ const Task = ({data}) => {
     }
 
     function deleteAction(id) {
-        deleteOperation(id, setOperations);
+        deleteOperation(id).then(() => getOperations(data.id, setOperations));
     }
 
     return (

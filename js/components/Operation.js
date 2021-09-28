@@ -4,7 +4,8 @@ import {getOperations} from "../api/operations";
 const Operation = ({singleOperation, onDeleteOperation}) => {
     const [showingForm, setShowingForm] = useState(false);
 
-    function handleDelete() {
+    function handleDelete(e) {
+        e.preventDefault();
         if (typeof onDeleteOperation === "function") {
             onDeleteOperation(singleOperation.id);
         }
@@ -25,7 +26,7 @@ const Operation = ({singleOperation, onDeleteOperation}) => {
                                 Add time
                                 <i className="fas fa-clock ml-1"/>
                             </button>
-                            <button className="btn btn-outline-danger btn-sm" onClick={() => handleDelete}><i
+                            <button className="btn btn-outline-danger btn-sm" onClick={e => handleDelete(e)}><i
                                 className="fas fa-trash"/></button>
                         </>)}
                     </div>

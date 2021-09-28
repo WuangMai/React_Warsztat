@@ -48,7 +48,7 @@ export const setOperation = async (id, newOperation, successCallback) => {
     }
 };
 
-export const deleteOperation = async (id, successCallback)=>{
+export const deleteOperation = async (id)=>{
     try {
         const response = await fetch(`${API_URL}/operations/${id}`, {
             method: "DELETE",
@@ -59,11 +59,9 @@ export const deleteOperation = async (id, successCallback)=>{
 
         const data = await response.json();
 
-        if (data.error || typeof successCallback !== "function") {
+        if (data.error) {
             throw new Error("Błąd!");
         }
-
-        console.log(data);
 
     } catch (err) {
         console.error(err);
