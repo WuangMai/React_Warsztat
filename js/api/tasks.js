@@ -9,6 +9,7 @@ export const getTasks = async (successCallback) => {
         });
 
         const data = await response.json();
+        console.log(data);
 
         if (data.error || typeof successCallback !== "function") {
             throw new Error("Błąd!");
@@ -19,3 +20,28 @@ export const getTasks = async (successCallback) => {
         console.log(err);
     }
 };
+
+export const setTask = async (newTask, successCallback) => {
+    try {
+        const response = await fetch(`${API_URL}/tasks`, {
+            method: "POST",
+            headers: {
+                Authorization: API_KEY,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newTask)
+        });
+
+        const data = await response.json();
+        console.log(data);
+        if (data.error) {
+            throw new Error("Błąd!");
+        }
+
+        getTasks(successCallback);
+
+    } catch (err) {
+        console.log(err);
+    }
+};
+

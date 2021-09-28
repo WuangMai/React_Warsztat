@@ -1,19 +1,28 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {getTasks} from "./api/tasks";
+import {getTasks, setTask} from "./api/tasks";
 import NewTask from "./components/NewTask";
-import Task from "./components/Task";
+import TaskList from "./components/TaskList";
 
 const App = () => {
     const [tasks, setTasks] = useState([]);
+    const [newTask, setNewTask] = useState({});
+
     useEffect(() => {
         getTasks(setTasks);
 
     }, [])
+
+    useEffect(() => {
+        if (newTask.title) {
+            setTask(newTask, setTasks);
+        }
+    }, [newTask])
+
     return (
         <>
-            <NewTask/>
-            <Task/>
+            <NewTask onNewTask={setNewTask}/>
+            <TaskList tasks={tasks}/>
         </>
     );
 };
