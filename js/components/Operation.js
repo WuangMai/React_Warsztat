@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
+import {getOperations} from "../api/operations";
 
-const Operation = ({singleOperation}) => {
+const Operation = ({singleOperation, onDeleteOperation}) => {
     const [showingForm, setShowingForm] = useState(false);
+
+    function handleDelete() {
+        if (typeof onDeleteOperation === "function") {
+            onDeleteOperation(singleOperation.id);
+        }
+    }
 
     return (
         <>
@@ -18,7 +25,8 @@ const Operation = ({singleOperation}) => {
                                 Add time
                                 <i className="fas fa-clock ml-1"/>
                             </button>
-                            <button className="btn btn-outline-danger btn-sm"><i className="fas fa-trash"/></button>
+                            <button className="btn btn-outline-danger btn-sm" onClick={() => handleDelete}><i
+                                className="fas fa-trash"/></button>
                         </>)}
                     </div>
 

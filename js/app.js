@@ -8,16 +8,10 @@ import {getOperations} from "./api/operations";
 const App = () => {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState({});
-    const [operations, setOperations] = useState({});
 
     useEffect(() => {
         getTasks(setTasks);
-
     }, []);
-
-    // useEffect(()=>{
-    //     getOperations(setOperations);
-    // },[]);
 
     useEffect(() => {
         if (newTask.title) {
