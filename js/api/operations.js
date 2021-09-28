@@ -21,6 +21,6 @@ export const getOperations = async (id, successCallback) => {
 
         successCallback(data.data);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 };

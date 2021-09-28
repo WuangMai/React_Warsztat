@@ -9,7 +9,6 @@ export const getTasks = async (successCallback) => {
         });
 
         const data = await response.json();
-        console.log(data);
 
         if (data.error || typeof successCallback !== "function") {
             throw new Error("Błąd!");
@@ -17,7 +16,7 @@ export const getTasks = async (successCallback) => {
 
         successCallback(data.data);
     } catch (err) {
-        console.log(err);
+        console.error(err);
     }
 };
 
@@ -33,7 +32,6 @@ export const setTask = async (newTask, successCallback) => {
         });
 
         const data = await response.json();
-        console.log(data);
         if (data.error) {
             throw new Error("Błąd!");
         }

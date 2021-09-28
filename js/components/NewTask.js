@@ -43,7 +43,7 @@ const NewTask = ({onNewTask}) => {
                     </div>
                     <button className="btn btn-info">
                         Add task
-                        <i className="fas fa-plus-circle ml-1"></i>
+                        <i className="fas fa-plus-circle ml-1"/>
                     </button>
                 </form>
             </div>
